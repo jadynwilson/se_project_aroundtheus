@@ -50,6 +50,6 @@
   cursor: pointer;
 }
 
-.card__like-button {
+.card__like-button:hover {
   opacity: 50%;
 }
