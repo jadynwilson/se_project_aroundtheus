@@ -1,0 +1,33 @@
+.header {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  padding: 45px 0 41px;
+  box-sizing: border-box;
+}
+
+.header::after {
+  max-width: 880px;
+  content: "";
+  position: absolute;
+  background-color: #545454;
+  opacity: 70%;
+  border: 1px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    padding: 28px 0 32px 27px;
+  }
+
+  .header__logo {
+    width: 126px;
+    height: 24px;
+  }
+
+  .header::after {
+    padding: 0;
+  }
+}
