@@ -75,50 +75,13 @@
   max-width: 373px;
 }
 
-@media screen and (max-width: 320px) {
-  .profile {
-    align-items: center;
-    overflow-x: hidden;
-    padding-top: 35px;
+@media screen and (max-width: 1440px) {
+  .profile__title {
+    flex-direction: column;
   }
 
   .profile__info {
-    padding: 14px;
-  }
-
-  .profile__image {
-    margin: 0;
-    padding: 0;
-  }
-
-  .profile__title {
-    font-size: 22px;
-    margin: 0;
-    padding-top: 27px;
-    line-height: 18px;
-  }
-
-  .profile__description {
-    padding: 14px 0 36px 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-  }
-
-  .profile__edit-button {
-    height: 18px;
-    width: 18px;
-    align-items: center;
-    padding: 0;
-  }
-
-  .profile__edit-button:hover {
-    color: #fff;
-    opacity: 60%;
-  }
-
-  .profile__add-button {
-    padding-bottom: 36px;
+    display: flex;
   }
 }
 
@@ -146,9 +109,9 @@
 
   .profile__info {
     display: flex;
-    gap: 0;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0;
   }
 
   .profile__title {
@@ -185,7 +148,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 540px) {
   .profile {
     padding-top: 35px;
   }
@@ -195,24 +158,25 @@
   }
 
   .profile__image {
-    padding: 0;
     margin-bottom: 27px;
+    padding: 0;
   }
 
   .profile__title {
     font-size: 22px;
-    line-height: 27px;
-    text-align: center;
     margin: 0;
     max-width: 196px;
     padding: 0;
+    line-height: 27px;
+    text-align: center;
+    text-overflow: clip;
   }
 
   .profile__description {
     padding: 14px 0 36px 0;
+    font-size: 14px;
     font-weight: 400;
     line-height: 17px;
-    font-size: 14px;
     word-wrap: break-word;
   }
 
@@ -222,9 +186,55 @@
     grid-area: button;
     margin-left: 10px;
     padding: 0;
+    display: flexbox;
   }
 
   .profile__edit-button:hover {
+    opacity: 60%;
+  }
+
+  .profile__add-button {
+    padding-bottom: 36px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile {
+    align-items: center;
+    padding-top: 35px;
+  }
+
+  .profile__info {
+    padding: 14px;
+  }
+
+  .profile__image {
+    margin: 0;
+    padding: 0;
+  }
+
+  .profile__title {
+    font-size: 22px;
+    margin: 0;
+    padding-top: 27px;
+    line-height: 1.2;
+  }
+
+  .profile__description {
+    padding: 14px 0 36px 0;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
+    align-items: center;
+    padding: 0;
+  }
+
+  .profile__edit-button:hover {
+    color: #fff;
     opacity: 60%;
   }
 

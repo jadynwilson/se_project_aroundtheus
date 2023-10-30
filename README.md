@@ -16,3 +16,9 @@ The third project of the Software Engineering program at TripleTen. This project
 ## Plan on improving the project
 
 I would like to be able to add onto the project and figure out a way I can create a form that others can add pictures to the website, along with thier own profiles. I also would like to add an animation that changes the like button to grow and/or change in style once it it clicked by the user.
+
+## Links
+
+[GitHub Pages](https://github.com/jadynwilson/se_project_aroundtheus)
+
+[Website](http://127.0.0.1:5500/index.html)
