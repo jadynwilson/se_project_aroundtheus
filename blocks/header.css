@@ -1,6 +1,6 @@
 .header {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  padding: 45px 0 41px;
+  padding: 45px 0 41px 27px;
   box-sizing: border-box;
 }
 
@@ -17,17 +17,15 @@
   height: 1px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen (min-width: 320px) and (max-width: 900px) {
   .header {
-    padding: 28px 0 32px 27px;
+    padding-bottom: 32px;
   }
 
-  .header__logo {
+  .header__image {
+    margin: 28px 0 0 27px;
+    padding: 0;
     width: 126px;
     height: 24px;
-  }
-
-  .header::after {
-    padding: 0;
   }
 }
