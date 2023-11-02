@@ -1,6 +1,5 @@
 .header {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  padding: 45px 0 41px 27px;
   box-sizing: border-box;
 }
 
@@ -17,9 +16,10 @@
   height: 1px;
 }
 
-@media screen (min-width: 320px) and (max-width: 900px) {
+@media screen and (min-width: 320px) and (max-width: 900px) {
   .header {
     padding-bottom: 32px;
+    justify-content: center;
   }
 
   .header__image {
