@@ -33,6 +33,7 @@
     "description description";
   grid-template-columns: minmax(auto, 373px) auto;
   grid-gap: 14px 17px;
+  align-items: center;
 }
 
 .profile__edit-button {
@@ -72,42 +73,9 @@
   grid-area: description;
   margin: 0;
   text-overflow: ellipsis;
-  word-wrap: break-word;
-  white-space: normal;
+  overflow: hidden;
+  white-space: no-wrap;
   max-width: 415px;
-}
-
-@media screen and (min-width: 621px) and (max-width: 925px) {
-  .profile {
-    justify-content: space-between;
-  }
-
-  .profile__info {
-    display: flex;
-    max-width: 420px;
-    justify-content: start;
-    margin: 0 0 0 30px;
-    flex-wrap: wrap;
-  }
-  .profile__title {
-    text-align: center;
-  }
-
-  .profile__description {
-    text-align: center;
-  }
-
-  .profile__edit-button {
-    margin: 0;
-    width: 18px;
-    height: 18px;
-    margin: 4px 15px 14px 10px;
-  }
-
-  .profile__add-button {
-    margin: 0;
-    width: 150px;
-  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 620px) {
