@@ -32,7 +32,7 @@
     "title button"
     "description description";
   grid-template-columns: minmax(auto, 373px) auto;
-  grid-gap: 18px 17px;
+  grid-gap: 14px 17px;
 }
 
 .profile__edit-button {
@@ -54,7 +54,7 @@
   height: 50px;
   width: 150px;
   margin: 0;
-  margin-left: 180px;
+  margin-left: auto;
   cursor: pointer;
   border-radius: 2px;
   border: 2px solid;
