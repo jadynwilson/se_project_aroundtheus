@@ -21,4 +21,4 @@ I would like to be able to add onto the project and figure out a way I can creat
 
 [GitHub Pages](https://github.com/jadynwilson/se_project_aroundtheus)
 
-[Website](http://127.0.0.1:5500/index.html)
+[Website](https://jadynwilson.github.io/se_project_aroundtheus/)
