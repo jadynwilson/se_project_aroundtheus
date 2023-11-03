@@ -21,8 +21,8 @@
   grid-area: title;
   margin: 0;
   text-overflow: ellipsis;
-  white-space: normal;
-  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
   max-width: 373px;
 }
 
@@ -75,7 +75,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: no-wrap;
-  max-width: 415px;
+  max-width: 373px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 620px) {
