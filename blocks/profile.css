@@ -72,9 +72,6 @@
   font-weight: 400;
   grid-area: description;
   margin: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: no-wrap;
   max-width: 373px;
 }
 
