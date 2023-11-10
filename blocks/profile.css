@@ -109,11 +109,10 @@
   }
 
   .profile__description {
-    min-width: 100%;
+    width: 100%;
     max-width: 282px;
     font-size: 14px;
-    display: flex;
-    justify-content: center;
+    text-align: center;
     line-height: 1.2;
     overflow: hidden;
     text-overflow: ellipsis;
