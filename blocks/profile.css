@@ -115,6 +115,8 @@
     display: flex;
     justify-content: center;
     line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .profile__add-button {
