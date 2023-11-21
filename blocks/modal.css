@@ -71,6 +71,10 @@ input[type="text"] {
   cursor: pointer;
 }
 
+.modal__close:hover {
+  opacity: 60%;
+}
+
 .modal__button {
   max-width: 358px;
   width: 100%;
