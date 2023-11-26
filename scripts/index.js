@@ -37,6 +37,7 @@ const profileEditDescription = document.querySelector(
   "#profile-description-input"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
+const cardsList = document.querySelector(".cards__list-cards");
 const cardTemplate =
   document.querySelector("#cards-template").content.firstElementChild;
 
@@ -56,7 +57,6 @@ function getCardElement(cardData) {
   cardTitle.textContent = cardData.name;
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
-
   return cardElement;
 }
 
@@ -83,5 +83,6 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
-  cardList.prepend(getcardData(cardElement));
+  console.log(cardData);
+  cardsList.prepend(cardElement);
 });
