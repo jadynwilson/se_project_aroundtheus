@@ -38,7 +38,7 @@ const profileEditDescription = document.querySelector(
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+  document.querySelector("#cards-template").content.firstElementChild;
 
 /* Functions */
 
@@ -47,12 +47,16 @@ function closePopup() {
 }
 
 function getCardElement(cardData) {
+  // selecting card and cloning it same amount of times as array length
   const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__list-image");
-  const cardTitle = cardElement.querySelector(".card__list-title");
+  //selecting images and title of card
+  const cardImage = cardElement.querySelector(".cards__list-image");
+  const cardTitle = cardElement.querySelector(".cards__list-title");
+  //set text image and alt to same as array data
   cardTitle.textContent = cardData.name;
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
+
   return cardElement;
 }
 
