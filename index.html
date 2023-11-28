@@ -53,22 +53,28 @@
 
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal-close-button"></button>
-        <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
+        <button
+          type="button"
+          class="modal__close"
+          id="modal-close-button"
+        ></button>
+        <p class="modal__title">Edit Profile</p>
+        <form class="modal__form" name="modal-form">
           <input
+            class="modal__form_input"
             type="text"
             placeholder="Name"
             name="title"
             id="profile-title-input"
           />
           <input
+            class="modal__form_input"
             type="text"
             placeholder="Description"
             name="description"
             id="profile-description-input"
           />
-          <button class="modal__button">Save</button>
+          <button type="button" name="modal__button">Save</button>
         </form>
       </div>
     </div>
