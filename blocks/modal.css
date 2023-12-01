@@ -94,8 +94,7 @@
 
 @media screen and (max-width: 775px) {
   .modal__container {
-    min-width: 238px;
-    height: 322px;
+    min-width: 282px;
     padding: 25px 22px;
   }
 
