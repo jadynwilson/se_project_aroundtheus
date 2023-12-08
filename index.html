@@ -50,7 +50,7 @@
         <p class="footer__text">&copy; 2023 Around The U.S</p>
       </footer>
     </div>
-
+    <!-- Edit Modal popup-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
@@ -73,6 +73,36 @@
             placeholder="Description"
             name="description"
             id="profile-description-input"
+          />
+          <button type="submit" name="modal__button" class="modal__button">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Add new card popup-->
+    <div class="modal" id="add-card-form">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close"
+          id="modal-close-button"
+        ></button>
+        <h2 class="modal__title">New Place</h2>
+        <form class="modal__form" name="modal-form">
+          <input
+            class="modal__input"
+            type="text"
+            placeholder="Title"
+            name="title"
+            id="profile-input-type-title"
+          />
+          <input
+            class="modal__input"
+            type="text"
+            placeholder="Image URL"
+            name="URL"
+            id="profile-input-type-url"
           />
           <button type="submit" name="modal__button" class="modal__button">
             Save
