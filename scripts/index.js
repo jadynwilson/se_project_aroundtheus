@@ -60,7 +60,9 @@ const modalImagePreviewLink = modalPreviewImage.querySelector(
 const modalPreviewTitle = modalPreviewImage.querySelector(
   ".modal__title-preview"
 );
-const buttonPreview = document.querySelector(".modal__close-preview-button");
+const previewCloseButton = document.querySelector(
+  ".modal__close-preview-button"
+);
 
 /* Functions */
 
@@ -118,6 +120,7 @@ function handleAddCardSubmit(evt) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardsList);
+  addCardFormElement.reset();
   closeModal(addCardModal);
 }
 
@@ -133,8 +136,9 @@ profileEditBtn.addEventListener("click", () => {
   profileEditDescription.value = profileDesciption.textContent;
   openModal(profileEditModal);
 });
-
-buttonPreview.addEventListener("click", () => closeModal(modalPreviewImage));
+previewCloseButton.addEventListener("click", () =>
+  closeModal(modalPreviewImage)
+);
 
 // add new card
 addNewCardBtn.addEventListener("click", () => openModal(addCardModal));
