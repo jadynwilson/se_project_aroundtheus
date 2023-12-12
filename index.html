@@ -111,9 +111,21 @@
       </div>
     </div>
 
+    <div class="modal" id="modal-image-preview">
+      <div class="modal__container modal__preview-container">
+        <button
+          class="modal__close modal__close-preview-button"
+          type="button"
+        ></button>
+        <img src="#" alt="#" class="modal__preview-image" />
+        <p class="modal__title-preview"></p>
+      </div>
+    </div>
+
     <template id="cards-template">
       <li class="cards__list-cards">
         <img src="" alt="" class="cards__list-image" />
+        <button type="button" class="cards__list-trash"></button>
         <div class="cards__list-description">
           <h2 class="cards__list-title"></h2>
           <button type="button" class="cards__like-button"></button>

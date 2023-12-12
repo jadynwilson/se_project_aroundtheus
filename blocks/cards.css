@@ -61,3 +61,17 @@
 .cards__like-button:hover {
   opacity: 50%;
 }
+
+.cards__list-trash {
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  position: absolute;
+  width: 18px;
+  height: 19px;
+  border: none;
+  margin: 18px 15px 249px 245px;
+  cursor: pointer;
+}
+
+.cards__list-trash:hover {
+  opacity: 0.6;
+}
