@@ -54,7 +54,7 @@
 .modal__input {
   border: none;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   width: 358px;
   height: 27px;
   position: relative;
@@ -141,6 +141,33 @@
 
 .modal__close-preview:hover {
   opacity: 0.6;
+}
+
+.modal__error {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ff0000;
+  left: 0;
+  top: calc(100% + 6px);
+  margin-bottom: 13px;
+}
+.modal__error_active {
+  opacity: 1;
+  color: 1;
+}
+
+.modal__button_disabled {
+  background: #f6f6f6;
+  border: 1px solid #000;
+  color: #000;
+  opacity: 0.2;
+  cursor: default;
+}
+
+.modal__button_disabled:hover {
+  opacity: 0.8;
 }
 @media screen and (max-width: 775px) {
   .modal__container {
