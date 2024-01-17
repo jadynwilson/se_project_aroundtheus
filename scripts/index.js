@@ -68,10 +68,14 @@ const previewCloseButton = document.querySelector(
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalsByEsc);
+  modal.removeEventListener("mousedown", closeModalByClickOff);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalsByEsc);
+  modal.addEventListener("mousedown", closeModalByClickOff);
 }
 
 function getCardElement(data) {
@@ -122,6 +126,19 @@ function handleAddCardSubmit(evt) {
   renderCard({ name, link }, cardsList);
   addCardFormElement.reset();
   closeModal(addCardModal);
+}
+
+function closeModalsByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closePopup(openedModal);
+  }
+}
+
+function closeModalByClickOff(evt) {
+  if (evt.tagret === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
 }
 
 // form listeners

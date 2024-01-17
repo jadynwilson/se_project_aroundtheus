@@ -1,5 +1,4 @@
 // enabling validation by calling enableValidation()
-// pass all the settings on call
 
 const config = {
   formSelector: ".modal__form",
@@ -34,20 +33,18 @@ function checkInputValidity(formEl, inputEl, options) {
   }
 }
 
+function hasInvalidInput(inputList) {
+  return !inputList.every((inputEl) => inputlEl.validity.valid);
+}
+
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-  let foundInvalid = false;
-  inputEls.forEach((inputEl) => {
-    if (!inputEl.validity.valid) {
-      foundInvalid = true;
-    }
-  });
-  if (foundInvalid) {
+  if (hasInvalidInput(inputEls)) {
     submitButton.classList.add(inactiveButtonClass);
     submitButton.disabled = true;
-  } else {
-    submitButton.classList.remove(inactiveButtonClass);
-    submitButton.disabled = false;
+    return;
   }
+  submitButton.classList.remove(inactiveButtonClass);
+  submitButton.disabled = false;
 }
 
 function setEventListeners(formEl, options) {
@@ -70,16 +67,6 @@ function enableValidation(options) {
     });
 
     setEventListeners(formEl, options);
-
-    //find all inputs inside form
-    //loop through all inputs to see if valid
-    // if input not valid
-    // get valid messgae
-    //add error class
-    // display error message
-    //diable button
-    //  if all inputs valid
-    //enable button
-    //reset error messages
   });
 }
+//
