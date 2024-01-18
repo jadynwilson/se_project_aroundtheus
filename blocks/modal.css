@@ -100,7 +100,7 @@
   margin-top: 18px;
 }
 
-.modal__button:hover {
+.modal__button_disabled:hover {
   opacity: 80%;
 }
 

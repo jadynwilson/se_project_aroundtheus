@@ -131,13 +131,13 @@ function handleAddCardSubmit(evt) {
 function closeModalsByEsc(evt) {
   if (evt.key === "Escape") {
     const openedModal = document.querySelector(".modal_opened");
-    closePopup(openedModal);
+    closeModal(openedModal);
   }
 }
 
 function closeModalByClickOff(evt) {
   if (evt.tagret === evt.currentTarget) {
-    closePopup(evt.currentTarget);
+    closeModal(evt.currentTarget);
   }
 }
 
