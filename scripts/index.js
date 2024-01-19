@@ -136,7 +136,7 @@ function closeModalsByEsc(evt) {
 }
 
 function closeModalByClickOff(evt) {
-  if (evt.tagret === evt.currentTarget) {
+  if (evt.target === evt.currentTarget) {
     closeModal(evt.currentTarget);
   }
 }
