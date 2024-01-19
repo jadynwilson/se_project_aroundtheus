@@ -34,7 +34,13 @@ function checkInputValidity(formEl, inputEl, options) {
 }
 
 function hasInvalidInput(inputList) {
-  return !inputList.every((inputEl) => inputlEl.validity.valid);
+  let foundInvalid = false;
+  inputList.forEach((inputElement) => {
+    if (!inputElement.validity.valid) {
+      foundInvalid = true;
+    }
+  });
+  return foundInvalid;
 }
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
