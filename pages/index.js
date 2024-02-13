@@ -1,3 +1,6 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FromValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -64,6 +67,22 @@ const previewCloseButton = document.querySelector(
   ".modal__close-preview-button"
 );
 
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+const profileEditFormValidator = new FormValidator(config, profileEditForm);
+
+profileEditFormValidator.enableValidation();
+
+const addCardFormValidator = new FormValidator(config, addCardFormElement);
+
+addCardFormValidator.enableValidation();
+
 /* Functions */
 
 function closeModal(modal) {
@@ -112,6 +131,11 @@ function renderCard(cardData, wrapper) {
   wrapper.prepend(cardElement);
 }
 
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template");
+  return card.generateCard();
+}
+
 function handleProfileEditSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = profileEditTitle.value;
@@ -125,6 +149,7 @@ function handleAddCardSubmit(evt) {
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardsList);
   addCardFormElement.reset();
+  addCardFormValidator.disableButton();
   closeModal(addCardModal);
 }
 
@@ -142,15 +167,17 @@ function closeModalByClickOff(evt) {
 }
 
 // form listeners
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
+profileModalCloseButton.addEventListener("click", () => {
+  closeModal(profileEditModal);
+});
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
 addCardModal.addEventListener("submit", handleAddCardSubmit);
 
 profileEditBtn.addEventListener("click", () => {
   profileEditTitle.value = profileTitle.textContent;
   profileEditDescription.value = profileDesciption.textContent;
+  profileEditFormValidator.resetValidation();
   openModal(profileEditModal);
 });
 previewCloseButton.addEventListener("click", () =>
