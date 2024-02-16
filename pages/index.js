@@ -97,42 +97,13 @@ function openModal(modal) {
   modal.addEventListener("mousedown", closeModalByClickOff);
 }
 
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".cards__list-image");
-  const cardTitle = cardElement.querySelector(".cards__list-title");
-  const likeButton = cardElement.querySelector(".cards__like-button");
-  const deleteButton = cardElement.querySelector(".cards__list-trash");
-
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button-active");
-  });
-
-  cardImage.addEventListener("click", () => {
-    modalImagePreviewLink.src = cardImage.src;
-    modalImagePreviewLink.alt = cardImage.alt;
-    modalPreviewTitle.textContent = cardTitle.textContent;
-    openModal(modalPreviewImage);
-  });
-
-  cardTitle.textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-
-  return cardElement;
-}
-
-function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
+  cardsList.prepend(cardElement);
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template");
+  const card = new Card(cardData, "#card-template", handleImageClick);
   return card.generateCard();
 }
 
@@ -151,6 +122,13 @@ function handleAddCardSubmit(evt) {
   addCardFormElement.reset();
   addCardFormValidator.disableButton();
   closeModal(addCardModal);
+}
+
+function handleImageClick(cardData) {
+  openModal(modalPreviewImage);
+  modalPreviewImage.src = cardData.link;
+  modalPreviewImage.alt = cardData.name;
+  modalPreviewTitle.textContent = cardData.name;
 }
 
 function closeModalsByEsc(evt) {
