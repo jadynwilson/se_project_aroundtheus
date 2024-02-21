@@ -20,7 +20,7 @@ export default class Card {
   }
 
   _handleLikeIcon() {
-    this._likeButton.classList.toggle("card__like-button-active");
+    this._likeButton.classList.toggle(".card__like-button-active");
   }
 
   _handleDeleteCard() {
@@ -28,15 +28,15 @@ export default class Card {
     this._cardElement = null;
   }
 
-  _getView() {
-    return document
+  getView() {
+    this._cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector("cards__list-cards")
+      .content.querySelector(".cards__list-cards")
       .cloneNode(true);
   }
 
   generateCard() {
-    this._cardElement = this._getView();
+    this._cardElement = this.getView();
     this._likeButton = this._cardElement.querySelector(".cards__like-button");
     this._trashButton = this._cardElement.querySelector(".cards__trash-button");
     this._cardImageEl = this._cardElement.querySelector(".cards__image");
