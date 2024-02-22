@@ -7,25 +7,27 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._likeButton.addEventListener("click", () => {
-      this._handleLikeIcon();
-    });
-    this._trashButton.addEventListener("click", () => {
-      this._handleDeleteCard();
-    });
+    this._cardElement
+      .querySelector(".cards__like-button")
+      .addEventListener("click", () => {
+        this._handleLikeIcon();
+      });
+    this._cardElement
+      .querySelector(".cards__list-trash")
+      .addEventListener("click", () => {
+        this._cardElement.remove();
+      });
 
-    this._cardImageEl.addEventListener("click", () => {
-      this._handleImageClick(this);
-    });
+    this._cardElement
+      .querySelector(".cards__list-image")
+      .addEventListener("click", () => {
+        this._handleImageClick(this);
+      });
   }
-
   _handleLikeIcon() {
-    this._likeButton.classList.toggle(".card__like-button-active");
-  }
-
-  _handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+    this._cardElement
+      .querySelector(".cards__like-button")
+      .classList.toggle("cards__like-button_active");
   }
 
   getView() {
@@ -33,18 +35,17 @@ export default class Card {
       .querySelector(this._cardSelector)
       .content.querySelector(".cards__list-cards")
       .cloneNode(true);
-  }
+    this._setEventListeners();
 
-  generateCard() {
-    this._cardElement = this.getView();
-    this._likeButton = this._cardElement.querySelector(".cards__like-button");
-    this._trashButton = this._cardElement.querySelector(".cards__trash-button");
-    this._cardImageEl = this._cardElement.querySelector(".cards__image");
-    this._cardTitleEl = this._cardElement.querySelector(".cards__title");
+    this._cardImage = this._cardElement.querySelector(".cards__list-image");
+    this._cardTitle = this._cardElement.querySelector(".cards__list-title");
+    this._cardLikeButton = this._cardElement.querySelector(
+      ".cards__like-button"
+    );
 
-    this._cardTitleEl.textContent = this.name;
-    this._cardImageEl.setAttribute("src", this.link);
-    this._cardImageEl.setAttribute("alt", this.name);
+    this._cardImage.src = this.link;
+    this._cardImage.alt = this.name;
+    this._cardTitle.textContent = this.name;
 
     this._setEventListeners();
 

@@ -103,8 +103,8 @@ function renderCard(cardData) {
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  return card.generateCard();
+  const card = new Card(cardData, "#cards-template", handleImageClick);
+  return card.getView();
 }
 
 function handleProfileEditSubmit(evt) {
