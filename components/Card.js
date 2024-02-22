@@ -27,7 +27,7 @@ export default class Card {
   _handleLikeIcon() {
     this._cardElement
       .querySelector(".cards__like-button")
-      .classList.toggle("cards__like-button_active");
+      .classList.toggle(".cards__like-button-active");
   }
 
   getView() {
@@ -35,7 +35,6 @@ export default class Card {
       .querySelector(this._cardSelector)
       .content.querySelector(".cards__list-cards")
       .cloneNode(true);
-    this._setEventListeners();
 
     this._cardImage = this._cardElement.querySelector(".cards__list-image");
     this._cardTitle = this._cardElement.querySelector(".cards__list-title");

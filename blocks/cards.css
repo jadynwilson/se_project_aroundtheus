@@ -51,7 +51,7 @@
   background: transparent url(../images/like.svg) center no-repeat;
   width: 21px;
   height: 18px;
-  border: none;
+  border: 0;
   cursor: pointer;
 }
 

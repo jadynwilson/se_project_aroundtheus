@@ -125,10 +125,10 @@ function handleAddCardSubmit(evt) {
 }
 
 function handleImageClick(cardData) {
-  openModal(modalPreviewImage);
-  modalPreviewImage.src = cardData.link;
+  modalImagePreviewLink.src = cardData.link;
   modalPreviewImage.alt = cardData.name;
   modalPreviewTitle.textContent = cardData.name;
+  openModal(modalPreviewImage);
 }
 
 function closeModalsByEsc(evt) {
