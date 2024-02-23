@@ -7,27 +7,21 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".cards__like-button")
-      .addEventListener("click", () => {
-        this._handleLikeIcon();
-      });
+    this._cardLikeButton.addEventListener("click", () => {
+      this._handleLikeIcon();
+    });
     this._cardElement
       .querySelector(".cards__list-trash")
       .addEventListener("click", () => {
         this._cardElement.remove();
       });
 
-    this._cardElement
-      .querySelector(".cards__list-image")
-      .addEventListener("click", () => {
-        this._handleImageClick(this);
-      });
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this);
+    });
   }
   _handleLikeIcon() {
-    this._cardElement
-      .querySelector(".cards__like-button")
-      .classList.toggle("cards__like-button-active");
+    this._cardLikeButton.classList.toggle("cards__like-button-active");
   }
 
   getView() {
