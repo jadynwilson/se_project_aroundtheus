@@ -27,7 +27,7 @@ export default class Card {
   _handleLikeIcon() {
     this._cardElement
       .querySelector(".cards__like-button")
-      .classList.toggle(".cards__like-button-active");
+      .classList.toggle("cards__like-button-active");
   }
 
   getView() {
