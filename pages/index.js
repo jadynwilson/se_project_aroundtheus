@@ -149,7 +149,7 @@ profileModalCloseButton.addEventListener("click", () => {
 });
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-addCardModal.addEventListener("submit", handleAddCardSubmit);
+addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
 profileEditBtn.addEventListener("click", () => {
   profileEditTitle.value = profileTitle.textContent;
