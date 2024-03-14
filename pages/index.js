@@ -32,6 +32,15 @@ formList.forEach((form) => {
   forms[form.name] = form;
 });
 
+const addCardWithForm = new PopupWithForm(
+  {
+    popupSelector: "#add-card-modal",
+  },
+  handleAddCardSubmit
+);
+
+addCardWithForm.setEventListeners();
+
 const editModalWithForm = new PopupWithForm(
   {
     popupSelector: "#profile-edit-modal",
@@ -42,12 +51,12 @@ const editModalWithForm = new PopupWithForm(
 editModalWithForm.setEventListeners();
 
 const modalWithImage = new PopupWithImage({
-  popupSelector: "#preview__image-modal",
+  popupSelector: "#modal-image-preview",
 });
 
 modalWithImage.setEventListeners();
 
-const cardRenderer = new Section({
+const cardsRenderer = new Section({
   items: initialCards,
   renderer: createCard,
 });
@@ -73,8 +82,8 @@ function handleAddCardSubmit({ title, link }) {
 
 function fillUserData() {
   const userData = userInfo.getUserInfo();
-  editModalInputTitle.value = userData.title;
-  editModalDescription.value = userData.description.trim();
+  profileEditTitle.value = userData.title;
+  profileEditDescription.value = userData.description.trim();
 }
 
 function handleImageClick(name, link) {
@@ -82,15 +91,13 @@ function handleImageClick(name, link) {
 }
 
 // form listeners
-profileEditButton.addEventListener("click", () => {
+profileEditBtn.addEventListener("click", () => {
   fillUserData();
 
   formValidators["editCardForm"].resetValidation();
   editModalWithForm.open();
 });
 
-addNewCardButton.addEventListener("click", () => addCardWithForm.open());
+addNewCardBtn.addEventListener("click", () => addCardWithForm.open());
 
 cardsRenderer.renderItems();
-
-editModalWithForm.setEventListeners();
