@@ -119,7 +119,7 @@ function handleAddCardSubmit({ title, link }) {
 }
 
 function handleImageClick(data) {
-  modalWithImage.open(data.name, data.link);
+  modalWithImage.open(data);
 }
 
 function closeModalByClickOff(evt) {
