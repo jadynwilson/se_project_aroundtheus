@@ -118,8 +118,8 @@ function handleAddCardSubmit({ title, link }) {
   addCardWithForm.close();
 }
 
-function handleImageClick(name, link) {
-  modalWithImage.open({ name, link });
+function handleImageClick(data) {
+  modalWithImage.open(data.name, data.link);
 }
 
 function closeModalByClickOff(evt) {
