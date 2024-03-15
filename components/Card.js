@@ -1,7 +1,7 @@
 export default class Card {
   constructor({ name, link }, cardSelector, handleImageClick) {
-    this.name = name;
-    this.link = link;
+    this._name = name;
+    this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
   }
@@ -36,12 +36,11 @@ export default class Card {
       ".cards__like-button"
     );
 
-    this._cardImage.src = this.link;
-    this._cardImage.alt = this.name;
-    this._cardTitle.textContent = this.name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+    this._cardTitle.textContent = this._name;
 
     this._setEventListeners();
-
     return this._cardElement;
   }
 }
