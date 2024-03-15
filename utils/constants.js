@@ -33,11 +33,27 @@ export const config = {
   errorClass: "modal__error_visible",
 };
 
+export const previewCloseButton = document.querySelector(
+  ".modal__close-preview-button"
+);
+
 export const profileEditModal = document.querySelector("profile-edit-modal");
 
 export const profileEditForm = document.querySelector("#edit-profile-form");
 
+export const addCardModal = document.querySelector("#add-card-modal");
+
+export const addCardFormElement = addCardModal.querySelector("#add-card-form");
+
 export const profileEditBtn = document.querySelector("#profile-edit-button");
+
+export const profileModalCloseButton = document.querySelector(
+  "#modal-close-button"
+);
+
+export const addCardModalCloseButton = addCardModal.querySelector(
+  "#modal-add-card-close-button"
+);
 
 export const addNewCardBtn = document.querySelector(".profile__add-button");
 
@@ -51,9 +67,9 @@ export const profileEditDescription = document.querySelector(
   "#profile-description-input"
 );
 
-export const addCardFormElement = document.querySelector("#add-card-form");
-
 export const cardSelector = "#card-template";
+
+export const cardsList = document.querySelector(".cards__list");
 
 export const formList = [...document.querySelectorAll(".modal__form")];
 
