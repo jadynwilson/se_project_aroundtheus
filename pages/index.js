@@ -90,11 +90,15 @@ const editModalWithForm = new PopupWithForm(
 
 editModalWithForm.setEventListeners();
 
-const modalWithImage = new PopupWithImage({
+function handleImageClick(imageName, imageLink) {
+  imagePopup.open({ name: imageName, link: imageLink });
+}
+
+const imagePopup = new PopupWithImage({
   popupSelector: "#modal-image-preview",
 });
 
-modalWithImage.setEventListeners();
+imagePopup.setEventListeners();
 
 //handle functions
 
@@ -116,10 +120,6 @@ function handleAddCardSubmit({ title, link }) {
   formValidators["addCardForm"].disableButton();
   forms.addCardForm.reset();
   addCardWithForm.close();
-}
-
-function handleImageClick(data) {
-  modalWithImage.open(data);
 }
 
 function closeModalByClickOff(evt) {
