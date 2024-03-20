@@ -9,13 +9,12 @@
     />
     <title>Around The US</title>
     <link rel="shortcut icon" href="#" />
-    <link href="./pages/index.css" rel="stylesheet" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/around-logo.svg"
+          src="<%=require('./images/around-logo.svg')%>"
           alt="Around the US Logo"
           class="header__image"
         />
@@ -23,7 +22,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="Jacques Cousteau Profile Image"
             class="profile__image"
           />
@@ -160,7 +159,5 @@
         </div>
       </li>
     </template>
-
-    <script src="pages/index.js" type="module"></script>
   </body>
 </html>
