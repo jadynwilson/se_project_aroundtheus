@@ -43,7 +43,14 @@ function renderCard(cardData) {
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#cards-template", handleImageClick);
+  const card = new Card(
+    {
+      name: cardData.name,
+      link: cardData.link,
+    },
+    "#cards-template",
+    handleImageClick
+  );
   return card.getView();
 }
 
