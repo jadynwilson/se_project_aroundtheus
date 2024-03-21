@@ -123,8 +123,8 @@ formList.forEach((form) => {
   forms[form.name] = form;
 });
 
-function handleAddCardSubmit({ title, url }) {
-  const newCard = createCard({ name: title, link: url });
+function handleAddCardSubmit({ title, link }) {
+  const newCard = createCard({ name: title, link });
   cardsSection.addItem(newCard);
   formValidators["addCardForm"].disableButton();
   forms.addCardForm.reset();
