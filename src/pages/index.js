@@ -25,16 +25,6 @@ import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 
-//validator
-
-const profileEditFormValidator = new FormValidator(config, profileEditForm);
-
-profileEditFormValidator.enableValidation();
-
-const addCardFormValidator = new FormValidator(config, addCardFormElement);
-
-addCardFormValidator.enableValidation();
-
 //Cards
 
 function createCard(cardData) {
@@ -58,7 +48,7 @@ const cardsSection = new Section(
   },
   ".cards__list"
 );
-cardsSection.renderItems(initialCards);
+cardsSection.renderItems();
 
 const addCardWithForm = new PopupWithForm(
   {
@@ -121,7 +111,6 @@ function handleAddCardSubmit({ title, URL }) {
   const newCard = createCard({ name: title, link: URL });
   cardsSection.addItem(newCard);
   formValidators["addCardForm"].disableButton();
-  forms.addCardForm.reset();
   addCardWithForm.close();
 }
 
