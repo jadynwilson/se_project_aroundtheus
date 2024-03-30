@@ -43,7 +43,7 @@ const cardsSection = new Section(
     items: initialCards,
     renderer: (data) => {
       const cardElement = createCard(data);
-      cardsList.prepend(cardElement);
+      cardsSection.addItem(cardElement);
     },
   },
   ".cards__list"
