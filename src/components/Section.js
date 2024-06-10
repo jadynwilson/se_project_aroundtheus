@@ -1,17 +1,18 @@
-export default class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._items = items;
-    this._renderer = renderer;
-    this._container = document.querySelector(containerSelector);
+export default class UserInfo {
+  constructor({ profileTitle, profileDescription }) {
+    this._profileTitle = document.querySelector(profileTitle);
+    this._profileDescription = document.querySelector(profileDescription);
   }
 
-  renderItems() {
-    this._items.forEach((item) => {
-      this._renderer(item);
-    });
+  getUserInfo() {
+    const userCurrentInfo = {};
+    userCurrentInfo.title = this._profileTitle.textContent;
+    userCurrentInfo.description = this._profileDescription.textContent;
+    return userCurrentInfo;
   }
 
-  addItem(element) {
-    this._container.prepend(element);
+  setUserInfo(data) {
+    this._profileTitle.textContent = data.title;
+    this._profileDescription.textContent = data.description;
   }
 }
