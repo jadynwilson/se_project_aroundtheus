@@ -20,6 +20,7 @@ export default class Card {
       this._handleImageClick(this._name, this._link);
     });
   }
+
   _handleLikeIcon() {
     this._cardLikeButton.classList.toggle("cards__like-button-active");
   }
@@ -29,17 +30,14 @@ export default class Card {
       .querySelector(this._cardSelector)
       .content.querySelector(".cards__list-cards")
       .cloneNode(true);
-
     this._cardImage = this._cardElement.querySelector(".cards__list-image");
     this._cardTitle = this._cardElement.querySelector(".cards__list-title");
     this._cardLikeButton = this._cardElement.querySelector(
       ".cards__like-button"
     );
-
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
-
     this._setEventListeners();
     return this._cardElement;
   }

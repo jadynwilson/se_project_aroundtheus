@@ -1,18 +1,19 @@
-export default class UserInfo {
-  constructor({ profileTitle, profileDescription }) {
-    this._profileTitle = document.querySelector(profileTitle);
-    this._profileDescription = document.querySelector(profileDescription);
+export default class Section {
+  constructor({ items, renderer }, containerSelector) {
+    this._items = items;
+
+    this._renderer = renderer;
+
+    this._container = document.querySelector(containerSelector);
   }
 
-  getUserInfo() {
-    const userCurrentInfo = {};
-    userCurrentInfo.title = this._profileTitle.textContent;
-    userCurrentInfo.description = this._profileDescription.textContent;
-    return userCurrentInfo;
+  renderItems() {
+    this._items.forEach((item) => {
+      this._renderer(item);
+    });
   }
 
-  setUserInfo(data) {
-    this._profileTitle.textContent = data.title;
-    this._profileDescription.textContent = data.description;
+  addItem(element) {
+    this._container.prepend(element);
   }
 }

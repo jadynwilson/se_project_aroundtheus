@@ -40,6 +40,10 @@
   font-family: "Inter", Arial, sans-serif;
 }
 
+.modal__delete-title {
+  padding-bottom: 38px;
+}
+
 .modal__form {
   max-width: 358px;
   font-family: "Inter", Arial, sans-serif;
@@ -98,6 +102,10 @@
   cursor: pointer;
   border-style: none;
   margin-top: 18px;
+}
+
+.modal__button-avatar {
+  margin-top: 0px;
 }
 
 .modal__button:hover {

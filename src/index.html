@@ -21,11 +21,15 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Jacques Cousteau Profile Image"
-            class="profile__image"
-          />
+          <div class="profile__avatar-container">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Jacques Cousteau Profile Image"
+              class="profile__image"
+            />
+            <button class="profile__avatar-button"
+          </div>
+
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -96,7 +100,9 @@
         </form>
       </div>
     </div>
+
     <!-- Add new card popup-->
+
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button
@@ -138,6 +144,8 @@
       </div>
     </div>
 
+    <!-- Preview Image Modal -->
+
     <div class="modal" id="modal-image-preview">
       <div class="modal__container modal__preview-container">
         <button
@@ -148,6 +156,48 @@
         <p class="modal__title-preview"></p>
       </div>
     </div>
+
+    <!-- Delete Card Confirm Modal-->
+
+    <div class="modal" id="delete-confirm-modal">
+      <div class="modal__container modal__delete-container">
+        <button class="modal__close"></button>
+        <form class="modal__form">
+          <h2 class="modal__title modal__delete-title">Are you sure?</h2>
+          <button
+            type="submit"
+            class="modal__button modal__submit-avatar-button"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Avatar Modal-->
+
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container">
+        <form class="modal__form" id="edit-avatar-form">
+          <button class="modal__close"></button>
+          <h2 class="modal__title">Change profile picture</h2>
+          <input
+            name="url"
+            id="url"
+            placeholder="Image URL"
+            type="url"
+            class="modal__input"
+            required
+            minlength="2"
+            maxlength="200"
+          />
+          <span class="modal__error" id="url-error"></span>
+          <button disabled type="submit" class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!--Card Template-->
 
     <template id="cards-template">
       <li class="cards__list-cards">
