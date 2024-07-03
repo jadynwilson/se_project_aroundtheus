@@ -24,7 +24,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Api from "../components/Api.js";
-import { values } from "core-js/core/array";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 //API
 
@@ -49,10 +49,10 @@ api
   .getUserInfo()
   .then((result) => {
     userInfo.setUserInfo({
-      nameInput: result.name,
-      jobInput: result.about,
+      profileEditTitle: result.title,
+      profileEditDescription: result.description,
+      avatar: result.avatar,
     });
-    userInfo.setUserAvatar(result.avatar);
   })
   .catch(console.error);
 
@@ -137,6 +137,11 @@ const imagePopup = new PopupWithImage({
 
 imagePopup.setEventListeners();
 
+const deleteConfirmModal = new PopupWithConfirm({
+  popupSelector: "#delete-confirm-modal",
+});
+deleteConfirmModal.setEventListeners();
+
 //handle functions
 
 function handleSubmit(request, modalInstance, loadingText = "Saving...") {
@@ -203,7 +208,6 @@ function handleEditAvatarFormSubmit(inputValues) {
 function handleOpenDeleteModal(card) {
   deleteConfirmModal.open();
   deleteConfirmModal.setHandleDeleteMethod(() => {
-    //calls DELETE Method from API
     api
       .deleteCard(card.id)
       .then(() => {

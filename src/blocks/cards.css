@@ -63,6 +63,10 @@
   opacity: 50%;
 }
 
+.cards__like-button:not(.cards__heart-button_acti):hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
 .cards__list-trash {
   background: transparent url(../images/Trash.svg) center no-repeat;
   position: absolute;
