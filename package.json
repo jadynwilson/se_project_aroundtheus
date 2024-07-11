@@ -1,6 +1,7 @@
 {
   "name": "practicum",
   "version": "0.0.1",
+  "homepage": "https://jadynwilson.github.io/se_project_aroundtheus/",
   "description": "Educational platform",
   "main": "index.js",
   "scripts": {

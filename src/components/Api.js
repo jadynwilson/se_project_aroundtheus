@@ -12,14 +12,31 @@ export default class Api {
     if (res.ok) {
       return res.json();
     }
-    // promise is rejected if the server returns an error
+    // if the server returns an error, reject the promise
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  //Card Routes
-
   getInitialCards() {
     return this._request(`${this._baseURL}/cards`, { headers: this._headers });
+  }
+
+  getUserInfo() {
+    return this._request(`${this._baseURL}/users/me`, {
+      headers: this._headers,
+    }).then((userData) => {
+      return userData;
+    });
+  }
+
+  updateUserInfo(name, about) {
+    return this._request(`${this._baseURL}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        about,
+      }),
+    });
   }
 
   addNewCard(name, link) {
@@ -52,27 +69,6 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     }).then(() => console.log("Card is not yet liked"));
-  }
-
-  //User Routes
-
-  getUserInfo() {
-    return this._request(`${this._baseURL}/users/me`, {
-      headers: this._headers,
-    }).then((userData) => {
-      return userData;
-    });
-  }
-
-  updateUserInfo(name, about) {
-    return this._request(`${this._baseURL}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        name,
-        about,
-      }),
-    });
   }
 
   updateAvatar(link) {
