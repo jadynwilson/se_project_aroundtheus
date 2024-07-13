@@ -38,26 +38,6 @@ const api = new Api({
   },
 });
 
-api
-  .getInitialCards()
-  .then((result) => {
-    result.forEach((cardData) => {
-      cardsSection.appendItem(createCard(cardData));
-    });
-  })
-  .catch(console.error);
-
-api
-  .getUserInfo()
-  .then((result) => {
-    userInfo.setUserInfo({
-      profileEditTitle: result.name,
-      profileEditDescription: result.description,
-    });
-    userInfo.setUserAvatar(result.avatar);
-  })
-  .catch(console.error);
-
 function createCard(cardData) {
   const card = new Card(
     {
@@ -81,6 +61,37 @@ const cardsSection = new Section(
 );
 cardsSection.renderItems();
 
+api
+  .getInitialCards()
+  .then((result) => {
+    result.forEach((cardData) => {
+      cardsSection.addItem(createCard(cardData));
+    });
+    cardsSection.renderItems();
+  })
+  .catch(console.error);
+
+const userInfo = new UserInfo({
+  profileTitle: ".profile__title",
+  profileDescription: ".profile__description",
+  avatarSelector: ".profile__image",
+});
+
+api
+  .getUserInfo()
+  .then((result) => {
+    if (userInfo) {
+      userInfo.setUserInfo({
+        profileEditTitle: result.name,
+        profileEditDescription: result.description,
+      });
+      userInfo.setUserAvatar(result.avatar);
+    } else {
+      console.error("userInfo is not defined.");
+    }
+  })
+  .catch(console.error);
+
 const addCardWithForm = new PopupWithForm(
   {
     popupSelector: "#add-card-modal",
@@ -97,12 +108,6 @@ profileAvatarButton.addEventListener("click", () => {
 });
 
 //user info
-
-const userInfo = new UserInfo({
-  profileTitle: ".profile__title",
-  profileDescription: ".profile__description",
-  avatarSelector: ".profile__image",
-});
 
 function fillUserData() {
   const userData = userInfo.getUserInfo();
@@ -129,13 +134,13 @@ const imagePopup = new PopupWithImage({
 
 imagePopup.setEventListeners();
 
-const avatarModal = new ModalWithForm(
+const avatarModal = new PopupWithForm(
   "#edit-avatar-modal",
   handleEditAvatarFormSubmit
 );
 avatarModal.setEventListeners();
 
-const deleteConfirmModal = new ModalConfirm({
+const deleteConfirmModal = new PopupWithConfirm({
   modalSelector: "#delete-confirm-modal",
 });
 deleteConfirmModal.setEventListeners();
@@ -183,7 +188,7 @@ function handleAddCardSubmit({ title, URL }) {
 
 function handleEditAvatarFormSubmit(value) {
   function makeRequest() {
-    return api.updateAvatar(Value.url).then((res) => {
+    return api.updateAvatar(value.url).then((res) => {
       userInfo.setUserAvatar(res.avatar);
       formValidators["edit-avatar-form"].disableButton();
     });
