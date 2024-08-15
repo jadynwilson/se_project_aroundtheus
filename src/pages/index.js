@@ -82,8 +82,8 @@ api
   .then((result) => {
     if (userInfo) {
       userInfo.setUserInfo({
-        profileEditTitle: result.name,
-        profileEditDescription: result.description,
+        title: result.name,
+        description: result.about,
       });
       userInfo.setUserAvatar(result.avatar);
     } else {
@@ -93,9 +93,7 @@ api
   .catch(console.error);
 
 const addCardWithForm = new PopupWithForm(
-  {
-    popupSelector: "#add-card-modal",
-  },
+  "#add-card-modal",
   handleAddCardSubmit
 );
 
@@ -116,9 +114,7 @@ function fillUserData() {
 }
 
 const editModalWithForm = new PopupWithForm(
-  {
-    popupSelector: "#profile-edit-modal",
-  },
+  "#profile-edit-modal",
   handleProfileEditSubmit
 );
 
@@ -134,14 +130,14 @@ const imagePopup = new PopupWithImage({
 
 imagePopup.setEventListeners();
 
-const avatarModal = new PopupWithForm(
-  "#edit-avatar-modal",
-  handleEditAvatarFormSubmit
-);
+const avatarModal = new PopupWithForm({
+  popupSelector: "#edit-avatar-modal",
+  handleEditAvatarFormSubmit,
+});
 avatarModal.setEventListeners();
 
 const deleteConfirmModal = new PopupWithConfirm({
-  modalSelector: "#delete-confirm-modal",
+  popupSelector: "#delete-confirm-modal",
 });
 deleteConfirmModal.setEventListeners();
 
