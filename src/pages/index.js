@@ -124,21 +124,17 @@ function handleImageClick(imageName, imageLink) {
   imagePopup.open({ name: imageName, link: imageLink });
 }
 
-const imagePopup = new PopupWithImage({
-  popupSelector: "#modal-image-preview",
-});
+const imagePopup = new PopupWithImage("#modal-image-preview");
 
 imagePopup.setEventListeners();
 
-const avatarModal = new PopupWithForm({
-  popupSelector: "#edit-avatar-modal",
-  handleEditAvatarFormSubmit,
-});
+const avatarModal = new PopupWithForm(
+  "#edit-avatar-modal",
+  handleEditAvatarFormSubmit
+);
 avatarModal.setEventListeners();
 
-const deleteConfirmModal = new PopupWithConfirm({
-  popupSelector: "#delete-confirm-modal",
-});
+const deleteConfirmModal = new PopupWithConfirm("#delete-confirm-modal");
 deleteConfirmModal.setEventListeners();
 
 //handle functions
@@ -168,7 +164,7 @@ function handleProfileEditSubmit(value) {
         });
       });
   }
-  handleSubmit(makeRequest, profileEditModal);
+  handleSubmit(makeRequest, editModalWithForm);
 }
 
 function handleAddCardSubmit({ title, URL }) {
