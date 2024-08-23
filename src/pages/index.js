@@ -124,7 +124,9 @@ function handleImageClick(imageName, imageLink) {
   imagePopup.open({ name: imageName, link: imageLink });
 }
 
-const imagePopup = new PopupWithImage("#modal-image-preview");
+const imagePopup = new PopupWithImage({
+  popupSelector: "#modal-image-preview",
+});
 
 imagePopup.setEventListeners();
 
