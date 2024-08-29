@@ -30,6 +30,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import Api from "../components/Api.js";
 
+/*----------api--------*/
+
 const api = new Api({
   baseURL: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -38,6 +40,8 @@ const api = new Api({
   },
 });
 
+/*---------cards---------*/
+
 function createCard(cardData) {
   const card = new Card(
     {
@@ -45,10 +49,13 @@ function createCard(cardData) {
       link: cardData.link,
     },
     "#cards-template",
-    handleImageClick
+    handleImageClick,
+    handleOpenDeleteModal,
+    handleLikeClick
   );
   return card.getView();
 }
+
 const cardsSection = new Section(
   {
     items: initialCards,
@@ -61,14 +68,16 @@ const cardsSection = new Section(
 );
 
 api
-  //.getInitialCards()
+  .getInitialCards()
   .then((result) => {
     result.forEach((cardData) => {
       cardsSection.addItem(createCard(cardData));
     });
     cardsSection.renderItems();
   })
-  .catch(console.error);
+  .catch((err) => console.log("Error loading initial cards:", err));
+
+/*---------User info---------*/
 
 const userInfo = new UserInfo({
   profileTitle: ".profile__title",
@@ -85,12 +94,27 @@ api
         description: result.about,
       });
       userInfo.setUserAvatar(result.avatar);
-    } else {
-      console.error("userInfo is not defined.");
     }
   })
-  .catch(console.error);
+  .catch((err) => console.log("Error loading user info:", err));
 
+function fillUserData() {
+  const userData = userInfo.getUserInfo();
+  profileEditTitle.value = userData.title;
+  profileEditDescription.value = userData.description.trim();
+}
+
+/*----------Popups-----*/
+
+//Edit Profile Popup
+const editModalWithForm = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
+
+editModalWithForm.setEventListeners();
+
+//Add new Card Popup
 const addCardWithForm = new PopupWithForm(
   "#add-card-modal",
   handleAddCardSubmit
@@ -100,41 +124,29 @@ addCardWithForm.setEventListeners();
 
 addNewCardBtn.addEventListener("click", () => addCardWithForm.open());
 
-profileAvatarButton.addEventListener("click", () => {
-  avatarModal.open();
-});
-
-//user info
-
-function fillUserData() {
-  const userData = userInfo.getUserInfo();
-  profileEditTitle.value = userData.title;
-  profileEditDescription.value = userData.description.trim();
-}
-
-const editModalWithForm = new PopupWithForm(
-  "#profile-edit-modal",
-  handleProfileEditSubmit
-);
-
-editModalWithForm.setEventListeners();
-
-function handleImageClick(imageName, imageLink) {
-  imagePopup.open({ name: imageName, link: imageLink });
-}
-
+//Image preview Popup
 const imagePopup = new PopupWithImage("#modal-image-preview");
 
 imagePopup.setEventListeners();
 
+//Delete card Confirm Popup
+const deleteConfirmModal = new PopupWithConfirm("#delete-confirm-modal");
+deleteConfirmModal.setEventListeners();
+
+//Adit Avater Popup
 const avatarModal = new PopupWithForm(
   "#edit-avatar-modal",
   handleEditAvatarFormSubmit
 );
 avatarModal.setEventListeners();
 
-const deleteConfirmModal = new PopupWithConfirm("#delete-confirm-modal");
-deleteConfirmModal.setEventListeners();
+profileAvatarButton.addEventListener("click", () => {
+  avatarModal.open();
+});
+
+function handleImageClick(imageName, imageLink) {
+  imagePopup.open({ name: imageName, link: imageLink });
+}
 
 //handle functions
 
@@ -221,6 +233,8 @@ function handleLikeClick(card) {
 
 profileEditBtn.addEventListener("click", () => {
   fillUserData();
+
+  /*---------Form Validators----------*/
 
   formValidators["editCardForm"].resetValidation();
   editModalWithForm.open();
