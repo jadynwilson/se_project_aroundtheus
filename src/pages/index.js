@@ -59,10 +59,9 @@ const cardsSection = new Section(
   },
   ".cards__list"
 );
-cardsSection.renderItems();
 
 api
-  .getInitialCards()
+  //.getInitialCards()
   .then((result) => {
     result.forEach((cardData) => {
       cardsSection.addItem(createCard(cardData));
