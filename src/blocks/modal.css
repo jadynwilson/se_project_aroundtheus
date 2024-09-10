@@ -181,6 +181,44 @@
 .modal__button_disabled:hover {
   opacity: 0.2;
 }
+
+.modal__button-confirm {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+  height: 50px;
+  width: 358px;
+  cursor: pointer;
+  margin: 38px 36px 38px 36px;
+}
+
+.modal-yes-button {
+  height: 50px;
+  width: 100%;
+  max-width: 358px;
+  margin-top: auto;
+  text-align: center;
+  border: 2px solid black;
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease-in-out;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.modal-delete-card-container {
+  width: 430px;
+  height: 181px;
+  padding: 0px;
+}
+
 @media screen and (max-width: 775px) {
   .modal__container {
     min-width: 282px;
