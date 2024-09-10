@@ -130,7 +130,9 @@ const imagePopup = new PopupWithImage("#modal-image-preview");
 imagePopup.setEventListeners();
 
 //Delete card Confirm Popup
-const deleteConfirmModal = new PopupWithConfirm("#delete-confirm-modal");
+const deleteConfirmModal = new PopupWithConfirm({
+  popupSelector: "#delete-confirm-modal",
+});
 deleteConfirmModal.setEventListeners();
 
 //Adit Avater Popup
@@ -150,20 +152,6 @@ function handleImageClick(imageName, imageLink) {
 
 //handle functions
 
-function handleSubmit(request, modalInstance, loadingText = "Saving...") {
-  modalInstance.renderLoading(true, loadingText);
-  request()
-    .then(() => {
-      modalInstance.close();
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      modalInstance.renderLoading(false);
-    });
-}
-
 function handleProfileEditSubmit(value) {
   function makeRequest() {
     return api
@@ -175,7 +163,6 @@ function handleProfileEditSubmit(value) {
         });
       });
   }
-  handleSubmit(makeRequest, editModalWithForm);
 }
 
 function handleAddCardSubmit({ title, URL }) {
@@ -186,17 +173,15 @@ function handleAddCardSubmit({ title, URL }) {
       addCardWithForm.close();
     });
   }
-  handleSubmit(makeRequest, addCardModal, "Creating...");
 }
 
 function handleEditAvatarFormSubmit(value) {
   function makeRequest() {
     return api.updateAvatar(value.url).then((res) => {
       userInfo.setUserAvatar(res.avatar);
-      formValidators["edit-avatar-form"].disableButton();
+      formValidators["avatar-edit-form"].disableButton();
     });
   }
-  handleSubmit(makeRequest, avatarModal);
 }
 
 function handleOpenDeleteModal(card) {

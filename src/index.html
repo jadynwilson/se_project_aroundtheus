@@ -26,6 +26,11 @@
             alt="Jacques Cousteau Profile Image"
             class="profile__image"
           />
+          <button
+            class="profile__avatar-button"
+            type="button"
+            id="avatar-edit-button"
+          ></button>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -96,6 +101,36 @@
         </form>
       </div>
     </div>
+
+    <!-- Edit Avatar Modal-->
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container" id="modal-avatar-edit-container">
+        <button class="modal__close" type="button"></button>
+        <p class="modal__heading">Change Profile Picture</p>
+        <form class="modal__form" id="avatar-edit-form">
+          <label class="modal__error_wrapper">
+            <input
+              type="url"
+              name="avatar"
+              placeholder="Image URL"
+              class="modal__input modal__input_type_url"
+              id="avatar-url-input"
+              required
+            />
+            <span class="modal__error" id="avatar-url-input-error"></span>
+          </label>
+          <button
+            class="modal__button modal__button_disabled"
+            id="avatar-save-button"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Add new card popup-->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
@@ -161,34 +196,6 @@
             class="modal__submit-button modal__submit-avatar-button"
           >
             Yes
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Edit Avatar Modal-->
-    <div class="modal" id="edit-avatar-modal">
-      <div class="modal__container">
-        <form name="edit-avatar-form" class="modal__form" id="edit-avatar-form">
-          <button class="modal__close"></button>
-          <h2 class="modal__heading">Change profile picture</h2>
-          <input
-            name="url"
-            id="url"
-            placeholder="Image URL"
-            type="url"
-            class="modal__input"
-            required
-            minlength="2"
-            maxlength="200"
-          />
-          <span class="modal__error" id="url-error"></span>
-          <button
-            disabled
-            type="submit"
-            class="modal__submit-button profile__avatar-button"
-          >
-            Save
           </button>
         </form>
       </div>

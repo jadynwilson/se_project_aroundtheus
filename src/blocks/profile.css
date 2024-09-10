@@ -78,32 +78,24 @@
   overflow: hidden;
 }
 
-.profile__avatar-container {
-  position: relative;
-  margin-right: 24px;
-}
-
-.profile__avatar-container:hover .profile__image {
-  opacity: 0.3;
-  cursor: pointer;
-}
-
-.profile__avatar-container:hover .profile__avatar-button {
-  visibility: visible;
-}
-
 .profile__avatar-button {
   background: transparent url(../images/pen-edit.svg) center no-repeat;
-  width: 120px;
-  height: 120px;
   position: absolute;
-  background-position: center;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-  border-radius: 50px;
+  left: 0;
+  height: 120px;
+  width: 120px;
   border: none;
-  visibility: hidden;
+  object-position: center;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.5s linear, background-color 0.5s linear;
+  z-index: 0;
+}
+
+profile__avatar-button:hover {
+  opacity: 60%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 320px) and (max-width: 620px) {
