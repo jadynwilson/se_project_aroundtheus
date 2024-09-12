@@ -153,35 +153,27 @@ function handleImageClick(imageName, imageLink) {
 //handle functions
 
 function handleProfileEditSubmit(value) {
-  function makeRequest() {
-    return api
-      .updateUserInfo(value.title, value.description)
-      .then((userData) => {
-        userInfo.setUserInfo({
-          titleinput: value.title,
-          descriptionInput: value.description,
-        });
-      });
-  }
+  return api.updateUserInfo(value.title, value.description).then((userData) => {
+    userInfo.setUserInfo({
+      title: value.title,
+      description: value.description,
+    });
+  });
 }
 
 function handleAddCardSubmit({ title, URL }) {
-  function makeRequest() {
-    return api.addNewCard({ name: title, link: URL }).then((res) => {
-      cardsSection.addItem(newCard);
-      formValidators["addCardForm"].disableButton();
-      addCardWithForm.close();
-    });
-  }
+  return api.addNewCard({ name: title, link: URL }).then((res) => {
+    cardsSection.addItem(createCard(res));
+    formValidators["addCardForm"].disableButton();
+    addCardWithForm.close();
+  });
 }
 
 function handleEditAvatarFormSubmit(value) {
-  function makeRequest() {
-    return api.updateAvatar(value.url).then((res) => {
-      userInfo.setUserAvatar(res.avatar);
-      formValidators["avatar-edit-form"].disableButton();
-    });
-  }
+  return api.updateAvatar(value.url).then((res) => {
+    userInfo.setUserAvatar(res.avatar);
+    formValidators["avatar-edit-form"].disableButton();
+  });
 }
 
 function handleOpenDeleteModal(card) {

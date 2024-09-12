@@ -39,7 +39,7 @@ export default class Api {
     });
   }
 
-  addNewCard(name, link) {
+  addNewCard({ name, link }) {
     return this._request(`${this._baseURL}/cards`, {
       method: "POST",
       headers: this._headers,
