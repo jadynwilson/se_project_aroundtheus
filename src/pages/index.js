@@ -51,8 +51,7 @@ function createCard(cardData) {
     "#cards-template",
     handleImageClick,
     (cardId, card) => {
-      console.log("Card ID:", cardData._id || cardData.id);
-      handleDeleteModal(cardData, card);
+      handleDeleteModal(cardId, card); //here
     },
     (cardId, isLiked, cardElement) => {
       handleLikeClick(cardId, isLiked, cardElement, card);
@@ -60,7 +59,6 @@ function createCard(cardData) {
   );
   return card.getView();
 }
-
 const cardsSection = new Section(
   {
     items: initialCards,
@@ -180,14 +178,7 @@ function handleEditAvatarFormSubmit(value) {
   });
 }
 
-function handleDeleteModal(cardData, card) {
-  const cardId = cardData._id || cardData.id;
-
-  if (!cardId) {
-    console.error("Card ID is undefined or invalid!");
-    return;
-  }
-
+function handleDeleteModal(cardId, card) {
   deleteCardPopup.setFormSubmitHandler(() => {
     api
       .deleteCard(cardId)
@@ -201,17 +192,17 @@ function handleDeleteModal(cardData, card) {
   deleteCardPopup.open();
 }
 
-function handleLikeClick(cardId, isLiked, cardElement, card) {
+function handleLikeClick(cardId, isLiked, card) {
   if (isLiked) {
     api
-      .cardUnlike(cardId)
+      .dislikeCard(cardId) // changed the function name, you were using card unlike but you have dislikeCard
       .then(() => {
         card.updateLikes();
       })
       .catch(console.error);
   } else {
     api
-      .cardLike(cardId)
+      .likeCard(cardId) // changed the function name, you were using cardLike but you have likeCard
       .then(() => {
         card.updateLikes();
       })
