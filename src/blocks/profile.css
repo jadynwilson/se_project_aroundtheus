@@ -92,7 +92,7 @@
   transition: opacity 0.5s linear, background-color 0.5s linear;
 }
 
-profile__avatar-button:hover {
+.profile__avatar-button:hover {
   opacity: 60%;
   cursor: pointer;
 }

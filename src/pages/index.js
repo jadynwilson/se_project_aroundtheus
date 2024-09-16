@@ -27,11 +27,10 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import PopupWithConfirm from "../components/PopupWithConfirm.js";
+import PopupDeleteCard from "../components/PopupDeleteCard.js";
 import Api from "../components/Api.js";
 
 /*----------api--------*/
-
 const api = new Api({
   baseURL: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -50,7 +49,7 @@ function createCard(cardData) {
     },
     "#cards-template",
     handleImageClick,
-    handleOpenDeleteModal,
+    handleDeleteModal,
     handleLikeClick
   );
   return card.getView();
@@ -130,10 +129,10 @@ const imagePopup = new PopupWithImage("#modal-image-preview");
 imagePopup.setEventListeners();
 
 //Delete card Confirm Popup
-const deleteConfirmModal = new PopupWithConfirm({
+const deleteCardPopup = new PopupDeleteCard({
   popupSelector: "#delete-confirm-modal",
 });
-deleteConfirmModal.setEventListeners();
+deleteCardPopup.setEventListeners();
 
 //Adit Avater Popup
 const avatarModal = new PopupWithForm(
@@ -163,12 +162,11 @@ function handleProfileEditSubmit(value) {
 
 function handleAddCardSubmit({ title, URL }) {
   return api.addNewCard({ name: title, link: URL }).then((res) => {
-    cardsSection.addItem(createCard(res));
+    cardsSection.addItem(createCard(res)); //create the card with the api response
     formValidators["addCardForm"].disableButton();
     addCardWithForm.close();
   });
 }
-
 function handleEditAvatarFormSubmit(value) {
   return api.updateAvatar(value.url).then((res) => {
     userInfo.setUserAvatar(res.avatar);
@@ -176,17 +174,25 @@ function handleEditAvatarFormSubmit(value) {
   });
 }
 
-function handleOpenDeleteModal(card) {
-  deleteConfirmModal.open();
-  deleteConfirmModal.setHandleDeleteMethod(() => {
+function handleDeleteModal(cardData, card) {
+  const cardId = cardData._id || cardData.id;
+
+  if (!cardId) {
+    console.error("Card ID is undefined or invalid!");
+    return;
+  }
+
+  deleteCardPopup.setFormSubmitHandler(() => {
     api
-      .deleteCard(card.id)
+      .deleteCard(cardId)
       .then(() => {
-        deleteConfirmModal.close();
-        card.removeCardElement();
+        card.deleteCard();
+        deleteCardPopup.close();
       })
       .catch(console.error);
   });
+
+  deleteCardPopup.open();
 }
 
 function handleLikeClick(card) {
