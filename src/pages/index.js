@@ -46,11 +46,17 @@ function createCard(cardData) {
     {
       name: cardData.name,
       link: cardData.link,
+      _id: cardData._id,
     },
     "#cards-template",
     handleImageClick,
-    handleDeleteModal,
-    handleLikeClick
+    (cardId, card) => {
+      console.log("Card ID:", cardData._id || cardData.id);
+      handleDeleteModal(cardData, card);
+    },
+    (cardId, isLiked, cardElement) => {
+      handleLikeClick(cardId, isLiked, cardElement, card);
+    }
   );
   return card.getView();
 }
@@ -195,20 +201,19 @@ function handleDeleteModal(cardData, card) {
   deleteCardPopup.open();
 }
 
-function handleLikeClick(card) {
-  if (card.isLiked) {
+function handleLikeClick(cardId, isLiked, cardElement, card) {
+  if (isLiked) {
     api
-      .dislikeCard(card.id)
+      .cardUnlike(cardId)
       .then(() => {
-        card.handleLikeButton();
+        card.updateLikes();
       })
       .catch(console.error);
-  }
-  if (!card.isLiked) {
+  } else {
     api
-      .likeCard(card.id)
+      .cardLike(cardId)
       .then(() => {
-        card.handleLikeButton();
+        card.updateLikes();
       })
       .catch(console.error);
   }
