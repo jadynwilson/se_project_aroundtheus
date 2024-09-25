@@ -80,12 +80,3 @@
 .cards__list-trash:hover {
   opacity: 0.6;
 }
-.card__likes-counter {
-  position: absolute;
-  color: #000;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 1.2;
-  margin: 40px 0 0 228px;
-  padding: 0;
-}

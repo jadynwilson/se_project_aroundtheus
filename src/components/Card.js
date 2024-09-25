@@ -59,9 +59,6 @@ export default class Card {
       ".cards__like-button"
     );
 
-    this._cardLikes = this._cardElement.querySelector(".card__likes-counter");
-    this.updateLikes();
-
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
