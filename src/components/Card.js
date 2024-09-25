@@ -1,6 +1,6 @@
 export default class Card {
   constructor(
-    { name, link, _id },
+    { name, link, _id, isLiked },
     cardSelector,
     handleImageClick,
     handleDeleteModal,
@@ -9,6 +9,7 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._id = _id;
+    this._isLiked = isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteModal = handleDeleteModal;
@@ -39,7 +40,11 @@ export default class Card {
     this._cardElement = null;
   }
   updateLikes() {
-    this._likeButton.classList.toggle("card__like-button_active");
+    if (this._isLiked) {
+      this._cardLikeButton.classList.add("cards__like-button-active");
+    } else {
+      this._cardLikeButton.classList.remove("cards__like-button_active");
+    }
   }
 
   getView() {
@@ -53,6 +58,9 @@ export default class Card {
     this._cardLikeButton = this._cardElement.querySelector(
       ".cards__like-button"
     );
+
+    this._cardLikes = this._cardElement.querySelector(".card__likes-counter");
+    this.updateLikes();
 
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;

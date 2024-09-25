@@ -47,11 +47,12 @@ function createCard(cardData) {
       name: cardData.name,
       link: cardData.link,
       _id: cardData._id,
+      isLiked: cardData.isLiked, //here
     },
     "#cards-template",
     handleImageClick,
     (cardId, card) => {
-      handleDeleteModal(cardId, card); //here
+      handleDeleteModal(cardId, card);
     },
     (cardId, isLiked, cardElement) => {
       handleLikeClick(cardId, isLiked, cardElement, card);
