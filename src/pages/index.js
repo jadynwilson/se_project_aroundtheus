@@ -62,7 +62,6 @@ function createCard(cardData) {
 }
 const cardsSection = new Section(
   {
-    items: initialCards,
     renderer: (data) => {
       const cardElement = createCard(data);
       cardsSection.addItem(cardElement);
@@ -198,14 +197,14 @@ function handleLikeClick(cardId, isLiked, card) {
     api
       .dislikeCard(cardId) // changed the function name, you were using card unlike but you have dislikeCard
       .then(() => {
-        card.updateLikes();
+        card.updateIsLiked(false);
       })
       .catch(console.error);
   } else {
     api
       .likeCard(cardId) // changed the function name, you were using cardLike but you have likeCard
       .then(() => {
-        card.updateLikes();
+        card.updateIsLiked(true);
       })
       .catch(console.error);
   }
