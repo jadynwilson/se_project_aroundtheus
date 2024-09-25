@@ -73,10 +73,7 @@ const cardsSection = new Section(
 api
   .getInitialCards()
   .then((result) => {
-    result.forEach((cardData) => {
-      cardsSection.addItem(createCard(cardData));
-    });
-    cardsSection.renderItems();
+    cardsSection.renderItems(result);
   })
   .catch((err) => console.log("Error loading initial cards:", err));
 
