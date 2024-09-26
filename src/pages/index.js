@@ -153,37 +153,69 @@ function handleImageClick(imageName, imageLink) {
 //handle functions
 
 function handleProfileEditSubmit(value) {
-  return api.updateUserInfo(value.title, value.description).then((userData) => {
-    userInfo.setUserInfo({
-      title: value.title,
-      description: value.description,
+  editModalWithForm.setLoadingState(false);
+  return api
+    .updateUserInfo(value.title, value.description)
+    .then((userData) => {
+      userInfo.setUserInfo({
+        title: value.title,
+        description: value.description,
+      });
+    })
+    .catch((err) => {
+      console.error("Profile update error:", err);
+    })
+    .finally(() => {
+      editModalWithForm.setLoadingState(true);
     });
-  });
 }
 
 function handleAddCardSubmit({ title, URL }) {
-  return api.addNewCard({ name: title, link: URL }).then((res) => {
-    cardsSection.addItem(createCard(res)); //create the card with the api response
-    formValidators["addCardForm"].disableButton();
-    addCardWithForm.close();
-  });
+  addCardWithForm.setLoadingState(false);
+  return api
+    .addNewCard({ name: title, link: URL })
+    .then((res) => {
+      cardsSection.addItem(createCard(res)); //create the card with the api response
+      formValidators["addCardForm"].disableButton();
+      addCardWithForm.close();
+    })
+    .catch((err) => {
+      console.error("Add card error:", err);
+    })
+    .finally(() => {
+      addCardWithForm.setLoadingState(true);
+    });
 }
 function handleEditAvatarFormSubmit(value) {
-  return api.updateAvatar(value.url).then((res) => {
-    userInfo.setUserAvatar(res.avatar);
-    formValidators["avatar-edit-form"].disableButton();
-  });
+  avatarModal.setLoadingState(false);
+  return api
+    .updateAvatar(value.avatar)
+    .then((res) => {
+      userInfo.setUserAvatar(res.avatar);
+    })
+    .catch((err) => {
+      console.error("Avatar update error:", err);
+    })
+    .finally(() => {
+      avatarModal.setLoadingState(true);
+    });
 }
 
 function handleDeleteModal(cardId, card) {
   deleteCardPopup.setFormSubmitHandler(() => {
+    deleteCardPopup.setDeleteState(true);
     api
       .deleteCard(cardId)
       .then(() => {
         card.deleteCard();
         deleteCardPopup.close();
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error("Delete card error:", err);
+      })
+      .finally(() => {
+        deleteCardPopup.setDeleteState(false);
+      });
   });
 
   deleteCardPopup.open();
@@ -192,14 +224,14 @@ function handleDeleteModal(cardId, card) {
 function handleLikeClick(cardId, isLiked, card) {
   if (isLiked) {
     api
-      .dislikeCard(cardId) // changed the function name, you were using card unlike but you have dislikeCard
+      .dislikeCard(cardId)
       .then(() => {
         card.updateIsLiked(false);
       })
       .catch(console.error);
   } else {
     api
-      .likeCard(cardId) // changed the function name, you were using cardLike but you have likeCard
+      .likeCard(cardId)
       .then(() => {
         card.updateIsLiked(true);
       })

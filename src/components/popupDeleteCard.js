@@ -13,6 +13,14 @@ export default class PopupDeleteCard extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
+  setDeleteState(isLoading) {
+    if (this._submitButton) {
+      this._submitButton.textContent = isLoading
+        ? "Deleting..."
+        : this._defaultButtonText;
+    }
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._popupForm.addEventListener("submit", (e) => {
