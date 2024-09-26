@@ -3,23 +3,14 @@ import "../pages/index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import {
-  initialCards,
-  profileEditForm,
-  addCardFormElement,
-  cardsList,
   config,
-  profileModalCloseButton,
   profileEditBtn,
-  previewCloseButton,
   addNewCardBtn,
-  addCardModalCloseButton,
   profileEditTitle,
   profileEditDescription,
   formValidators,
   forms,
   formList,
-  profileEditModal,
-  addCardModal,
   profileAvatarButton,
 } from "../utils/constants.js";
 
@@ -47,7 +38,7 @@ function createCard(cardData) {
       name: cardData.name,
       link: cardData.link,
       _id: cardData._id,
-      isLiked: cardData.isLiked, //here
+      isLiked: cardData.isLiked,
     },
     "#cards-template",
     handleImageClick,
@@ -175,7 +166,7 @@ function handleAddCardSubmit({ title, URL }) {
   return api
     .addNewCard({ name: title, link: URL })
     .then((res) => {
-      cardsSection.addItem(createCard(res)); //create the card with the api response
+      cardsSection.addItem(createCard(res));
       formValidators["addCardForm"].disableButton();
       addCardWithForm.close();
     })
