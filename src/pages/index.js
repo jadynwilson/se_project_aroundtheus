@@ -152,6 +152,7 @@ function handleProfileEditSubmit(value) {
         title: value.title,
         description: value.description,
       });
+      editModalWithForm.close();
     })
     .catch((err) => {
       console.error("Profile update error:", err);
@@ -183,6 +184,7 @@ function handleEditAvatarFormSubmit(value) {
     .updateAvatar(value.avatar)
     .then((res) => {
       userInfo.setUserAvatar(res.avatar);
+      avatarModal.close();
     })
     .catch((err) => {
       console.error("Avatar update error:", err);
