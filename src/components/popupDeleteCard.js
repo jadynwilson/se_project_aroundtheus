@@ -17,7 +17,7 @@ export default class PopupDeleteCard extends Popup {
     if (this._submitButton) {
       this._submitButton.textContent = isLoading
         ? "Deleting..."
-        : this._defaultButtonText;
+        : this._submitButtonText;
     }
   }
 
