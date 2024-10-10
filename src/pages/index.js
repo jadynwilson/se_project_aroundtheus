@@ -12,6 +12,7 @@ import {
   forms,
   formList,
   profileAvatarButton,
+  addCardFormElement,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
@@ -170,6 +171,7 @@ function handleAddCardSubmit({ title, URL }) {
       cardsSection.addItem(createCard(res));
       formValidators["addCardForm"].disableButton();
       addCardWithForm.close();
+      addCardFormElement.reset();
     })
     .catch((err) => {
       console.error("Add card error:", err);
