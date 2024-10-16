@@ -145,7 +145,7 @@ function handleImageClick(imageName, imageLink) {
 //handle functions
 
 function handleProfileEditSubmit(value) {
-  editModalWithForm.setLoadingState(false);
+  editModalWithForm.setLoadingState(true);
   return api
     .updateUserInfo(value.title, value.description)
     .then((userData) => {
@@ -159,12 +159,12 @@ function handleProfileEditSubmit(value) {
       console.error("Profile update error:", err);
     })
     .finally(() => {
-      editModalWithForm.setLoadingState(true);
+      editModalWithForm.setLoadingState(false);
     });
 }
 
 function handleAddCardSubmit({ title, URL }) {
-  addCardWithForm.setLoadingState(false);
+  addCardWithForm.setLoadingState(true);
   return api
     .addNewCard({ name: title, link: URL })
     .then((res) => {
@@ -177,11 +177,11 @@ function handleAddCardSubmit({ title, URL }) {
       console.error("Add card error:", err);
     })
     .finally(() => {
-      addCardWithForm.setLoadingState(true);
+      addCardWithForm.setLoadingState(false);
     });
 }
 function handleEditAvatarFormSubmit(value) {
-  avatarModal.setLoadingState(false);
+  avatarModal.setLoadingState(true);
   return api
     .updateAvatar(value.avatar)
     .then((res) => {
@@ -192,13 +192,13 @@ function handleEditAvatarFormSubmit(value) {
       console.error("Avatar update error:", err);
     })
     .finally(() => {
-      avatarModal.setLoadingState(true);
+      avatarModal.setLoadingState(false);
     });
 }
 
 function handleDeleteModal(cardId, card) {
   deleteCardPopup.setFormSubmitHandler(() => {
-    deleteCardPopup.setDeleteState(true);
+    deleteCardPopup.setDeleteState(false);
     api
       .deleteCard(cardId)
       .then(() => {
@@ -209,7 +209,7 @@ function handleDeleteModal(cardId, card) {
         console.error("Delete card error:", err);
       })
       .finally(() => {
-        deleteCardPopup.setDeleteState(false);
+        deleteCardPopup.setDeleteState(true);
       });
   });
 
