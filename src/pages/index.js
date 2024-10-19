@@ -198,7 +198,7 @@ function handleEditAvatarFormSubmit(value) {
 
 function handleDeleteModal(cardId, card) {
   deleteCardPopup.setFormSubmitHandler(() => {
-    deleteCardPopup.setDeleteState(false);
+    deleteCardPopup.setDeleteState(true);
     api
       .deleteCard(cardId)
       .then(() => {
@@ -209,7 +209,7 @@ function handleDeleteModal(cardId, card) {
         console.error("Delete card error:", err);
       })
       .finally(() => {
-        deleteCardPopup.setDeleteState(true);
+        deleteCardPopup.setDeleteState(false);
       });
   });
 
