@@ -57,9 +57,13 @@ export const addCardModalCloseButton = document.querySelector(
 
 export const addNewCardBtn = document.querySelector(".profile__add-button");
 
-//export const editProfileInputList = Array.from(
-//profileEditForm.querySelectorAll(".modal__input")
-//);
+export const profileAvatarButton = document.querySelector(
+  ".profile__avatar-button"
+);
+
+export const editProfileInputList = Array.from(
+  profileEditForm.querySelectorAll(".modal__input")
+);
 
 export const profileEditTitle = document.querySelector("#profile-title-input");
 
@@ -76,3 +80,28 @@ export const formList = [...document.querySelectorAll(".modal__form")];
 export const formValidators = {};
 
 export const forms = {};
+
+/*
+
+export const cardList = document.querySelector(".cards__list");
+
+export const profileEditBtn = document.querySelector(".profile__edit-button");
+export const addNewCardBtn = document.querySelector(".profile__add-button");
+export const profileName = document.querySelector(".profile__title");
+export const profileJob = document.querySelector(".profile__job");
+export const profileAvatarButton = document.querySelector(
+  ".profile__avatar-button"
+);
+
+export const nameInput = document.querySelector("[name='name'");
+export const jobInput = document.querySelector("[name='job']");
+
+export const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-button",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+*/
